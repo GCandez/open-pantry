@@ -1,1 +1,6 @@
-﻿<Solution />
+﻿<Solution>
+    <Folder Name="/Source/">
+        <Project Path="Source\OpenPantry.Domain\OpenPantry.Domain.csproj" Type="Classic C#"/>
+    </Folder>
+    <Folder Name="/Tests/"/>
+</Solution>
