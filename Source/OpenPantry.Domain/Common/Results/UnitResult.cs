@@ -29,7 +29,7 @@ public sealed class UnitResult<TError>
         return Failure(error);
     }
 
-    public static implicit operator UnitResult<TError>(UnitResult success)
+    public static implicit operator UnitResult<TError>(UnitResult _)
     {
         return Success();
     }
