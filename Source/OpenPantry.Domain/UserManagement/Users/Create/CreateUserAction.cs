@@ -1,8 +1,6 @@
 ﻿using OpenPantry.Domain.Common.Entities;
-using OpenPantry.Domain.UserManagement.Users.Events;
-using OpenPantry.Domain.UserManagement.Users.ValueObjects;
 
-namespace OpenPantry.Domain.UserManagement.Users.Actions;
+namespace OpenPantry.Domain.UserManagement.Users.Create;
 
 public sealed class CreateUserAction : EntityAction<UserEntity, UserCreatedEvent>
 {
@@ -24,8 +22,8 @@ public sealed class CreateUserAction : EntityAction<UserEntity, UserCreatedEvent
             Timestamp = Timestamp,
             Data = new()
             {
-                UserId = user.Id,
-                UserName = user.Name.Value
+                Id = user.Id,
+                Name = user.Name.Value
             }
         };
 

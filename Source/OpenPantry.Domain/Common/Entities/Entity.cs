@@ -1,8 +1,18 @@
 ﻿namespace OpenPantry.Domain.Common.Entities;
 
-public abstract record Entity<TEntity> : IEquatable<TEntity>
+public abstract record Entity<TEntity>
     where TEntity : Entity<TEntity>
 {
+    public virtual bool Equals(Entity<TEntity>? other)
+    {
+        return other is not null && Id.Equals(other.Id);
+    }
+
+    public override int GetHashCode()
+    {
+        return Id.GetHashCode();
+    }
+
     private readonly Queue<IEntityEvent<TEntity>> _uncommittedEvents = [];
 
     public required Guid Id { get; init; }
@@ -22,35 +32,5 @@ public abstract record Entity<TEntity> : IEquatable<TEntity>
     public void ClearUncommittedEvents()
     {
         _uncommittedEvents.Clear();
-    }
-
-    private bool Equals(Entity<TEntity> other)
-    {
-        return Id.Equals(other.Id);
-    }
-
-    public bool Equals(TEntity? other)
-    {
-        return other is not null && Id.Equals(other.Id);
-    }
-
-    public override bool Equals(object? obj)
-    {
-        return obj is Entity<TEntity> other && Equals(other);
-    }
-
-    public override int GetHashCode()
-    {
-        return Id.GetHashCode();
-    }
-
-    public static bool operator ==(Entity<TEntity>? left, Entity<TEntity>? right)
-    {
-        return Equals(left, right);
-    }
-
-    public static bool operator !=(Entity<TEntity>? left, Entity<TEntity>? right)
-    {
-        return !Equals(left, right);
     }
 }
