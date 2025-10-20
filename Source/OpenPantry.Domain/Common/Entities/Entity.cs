@@ -1,6 +1,6 @@
 ﻿namespace OpenPantry.Domain.Common.Entities;
 
-public abstract class Entity<TEntity> : IEquatable<TEntity>
+public abstract record Entity<TEntity> : IEquatable<TEntity>
     where TEntity : Entity<TEntity>
 {
     private readonly Queue<IEntityEvent<TEntity>> _uncommittedEvents = [];
