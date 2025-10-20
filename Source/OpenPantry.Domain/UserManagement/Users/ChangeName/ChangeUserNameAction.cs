@@ -1,9 +1,7 @@
 ﻿using OpenPantry.Domain.Common.Entities;
 using OpenPantry.Domain.Common.Results;
-using OpenPantry.Domain.UserManagement.Users.Events;
-using OpenPantry.Domain.UserManagement.Users.ValueObjects;
 
-namespace OpenPantry.Domain.UserManagement.Users.Actions;
+namespace OpenPantry.Domain.UserManagement.Users.ChangeName;
 
 public sealed class ChangeUserNameAction : EntityAction<UserEntity, ChangeUserNameAction.Error, UserNameChangedEvent>
 {

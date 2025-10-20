@@ -1,22 +1,21 @@
 ﻿using OpenPantry.Domain.Common.Entities;
-using OpenPantry.Domain.UserManagement.Users.ValueObjects;
 
-namespace OpenPantry.Domain.UserManagement.Users.Events;
+namespace OpenPantry.Domain.UserManagement.Users.Create;
 
 public sealed record UserCreatedEvent : EntityEvent<UserEntity, UserCreatedEvent.EventData>
 {
     public sealed record EventData
     {
-        public required Guid UserId { get; init; }
-        public required string UserName { get; init; }
+        public required Guid Id { get; init; }
+        public required string Name { get; init; }
     }
 
     public override UserEntity Apply(UserEntity? previousState)
     {
         return new()
         {
-            Id = Data.UserId,
-            Name = UserName.From(Data.UserName),
+            Id = Data.Id,
+            Name = UserName.From(Data.Name),
             CreatedAt = Timestamp,
             UpdatedAt = Timestamp
         };

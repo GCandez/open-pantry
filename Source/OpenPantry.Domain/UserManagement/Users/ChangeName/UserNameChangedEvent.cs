@@ -1,7 +1,6 @@
 ﻿using OpenPantry.Domain.Common.Entities;
-using OpenPantry.Domain.UserManagement.Users.ValueObjects;
 
-namespace OpenPantry.Domain.UserManagement.Users.Events;
+namespace OpenPantry.Domain.UserManagement.Users.ChangeName;
 
 public sealed record UserNameChangedEvent : EntityEvent<UserEntity, UserNameChangedEvent.EventData>
 {
