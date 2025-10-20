@@ -1,7 +1,7 @@
 ﻿using OpenPantry.Domain.Common.Results;
 using OpenPantry.Domain.Common.ValueObjects;
 
-namespace OpenPantry.Domain.UserManagement.Users.ValueObjects;
+namespace OpenPantry.Domain.UserManagement.Users;
 
 public readonly struct UserName : IValueObject<UserName>
 {
