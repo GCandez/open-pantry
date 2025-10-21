@@ -4,12 +4,6 @@ namespace OpenPantry.Domain.UserManagement.Groups.Create;
 
 public sealed record GroupCreatedEvent : EntityEvent<GroupEntity, GroupCreatedEvent.EventData>
 {
-    public sealed record EventData
-    {
-        public required Guid Id { get; init; }
-        public required string Name { get; init; }
-    }
-
     public override GroupEntity DeriveNewState(GroupEntity? previousState)
     {
         return new()
@@ -19,5 +13,11 @@ public sealed record GroupCreatedEvent : EntityEvent<GroupEntity, GroupCreatedEv
             CreatedAt = Timestamp,
             UpdatedAt = Timestamp
         };
+    }
+
+    public sealed record EventData
+    {
+        public required Guid Id { get; init; }
+        public required string Name { get; init; }
     }
 }

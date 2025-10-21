@@ -5,12 +5,12 @@ namespace OpenPantry.Domain.UserManagement.Groups.ChangeName;
 
 public sealed class ChangeGroupNameAction : EntityAction<GroupEntity, ChangeGroupNameAction.Error, GroupNameChangedEvent>
 {
-    public required GroupName NewName { get; init; }
-
     public enum Error
     {
         SameName
     }
+
+    public required GroupName NewName { get; init; }
 
     protected override Result<(GroupEntity NewState, GroupNameChangedEvent ResultingEvent), Error> DeriveNewState(GroupEntity? previousState)
     {

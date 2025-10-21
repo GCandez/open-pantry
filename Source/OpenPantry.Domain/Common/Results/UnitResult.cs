@@ -2,17 +2,18 @@
 
 public sealed class UnitResult<TError>
 {
-    public readonly bool IsSuccess;
-    public bool IsFailure => !IsSuccess;
     private readonly TError? _error;
-
-    public TError Error => IsFailure ? _error! : throw new InvalidOperationException("Cannot get error of successful result.");
+    public readonly bool IsSuccess;
 
     private UnitResult(bool isSuccess, TError? error)
     {
         IsSuccess = isSuccess;
         _error = error;
     }
+
+    public bool IsFailure => !IsSuccess;
+
+    public TError Error => IsFailure ? _error! : throw new InvalidOperationException("Cannot get error of successful result.");
 
     private static UnitResult<TError> Success()
     {

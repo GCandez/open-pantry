@@ -4,11 +4,6 @@ namespace OpenPantry.Domain.UserManagement.Groups.ChangeName;
 
 public sealed record GroupNameChangedEvent : EntityEvent<GroupEntity, GroupNameChangedEvent.EventData>
 {
-    public sealed record EventData
-    {
-        public required string NewName { get; init; }
-    }
-
     public override GroupEntity DeriveNewState(GroupEntity? previousState)
     {
         previousState.ThrowIfNull(this);
@@ -17,5 +12,10 @@ public sealed record GroupNameChangedEvent : EntityEvent<GroupEntity, GroupNameC
         {
             Name = GroupName.From(Data.NewName)
         };
+    }
+
+    public sealed record EventData
+    {
+        public required string NewName { get; init; }
     }
 }

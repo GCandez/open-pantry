@@ -2,13 +2,9 @@
 
 public sealed class Result<TValue, TError>
 {
-    public readonly bool IsSuccess;
-    public bool IsFailure => !IsSuccess;
-    private readonly TValue? _value;
     private readonly TError? _error;
-
-    public TValue Value => IsSuccess ? _value! : throw new InvalidOperationException("Cannot get value of failed result.");
-    public TError Error => !IsSuccess ? _error! : throw new InvalidOperationException("Cannot get error of successful result.");
+    private readonly TValue? _value;
+    public readonly bool IsSuccess;
 
     private Result(bool isSuccess, TValue? value, TError? error)
     {
@@ -16,6 +12,11 @@ public sealed class Result<TValue, TError>
         _value = value;
         _error = error;
     }
+
+    public bool IsFailure => !IsSuccess;
+
+    public TValue Value => IsSuccess ? _value! : throw new InvalidOperationException("Cannot get value of failed result.");
+    public TError Error => !IsSuccess ? _error! : throw new InvalidOperationException("Cannot get error of successful result.");
 
     private static Result<TValue, TError> Success(TValue value)
     {

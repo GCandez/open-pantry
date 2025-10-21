@@ -4,11 +4,6 @@ namespace OpenPantry.Domain.UserManagement.Users.ChangeName;
 
 public sealed record UserNameChangedEvent : EntityEvent<UserEntity, UserNameChangedEvent.EventData>
 {
-    public sealed record EventData
-    {
-        public required string NewUserName { get; init; }
-    }
-
     public override UserEntity DeriveNewState(UserEntity? previousState)
     {
         if (previousState is null)
@@ -19,5 +14,10 @@ public sealed record UserNameChangedEvent : EntityEvent<UserEntity, UserNameChan
             Name = UserName.From(Data.NewUserName),
             UpdatedAt = Timestamp
         };
+    }
+
+    public sealed record EventData
+    {
+        public required string NewUserName { get; init; }
     }
 }

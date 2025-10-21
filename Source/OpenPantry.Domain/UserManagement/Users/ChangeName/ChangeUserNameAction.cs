@@ -5,12 +5,12 @@ namespace OpenPantry.Domain.UserManagement.Users.ChangeName;
 
 public sealed class ChangeUserNameAction : EntityAction<UserEntity, ChangeUserNameAction.Error, UserNameChangedEvent>
 {
-    public required UserName NewName { get; init; }
-
     public enum Error
     {
         SameName
     }
+
+    public required UserName NewName { get; init; }
 
     protected override Result<(UserEntity NewState, UserNameChangedEvent ResultingEvent), Error> DeriveNewState(UserEntity? previousState)
     {
