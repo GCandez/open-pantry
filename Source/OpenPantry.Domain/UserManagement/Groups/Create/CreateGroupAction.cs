@@ -1,6 +1,6 @@
-﻿using OpenPantry.Domain.Common.Entities;
+﻿using OpenPantry.Domain.Common.Entities.Actions;
 
-namespace OpenPantry.Domain.UserManagement.Groups.CreateGroup;
+namespace OpenPantry.Domain.UserManagement.Groups.Create;
 
 public sealed class CreateGroupAction : EntityAction<GroupEntity, GroupCreatedEvent>
 {

@@ -1,4 +1,4 @@
-﻿using OpenPantry.Domain.Common.Entities;
+﻿using OpenPantry.Domain.Common.Entities.Events;
 
 namespace OpenPantry.Domain.UserManagement.Users.Create;
 
@@ -10,7 +10,7 @@ public sealed record UserCreatedEvent : EntityEvent<UserEntity, UserCreatedEvent
         public required string Name { get; init; }
     }
 
-    public override UserEntity Apply(UserEntity? previousState)
+    public override UserEntity DeriveNewState(UserEntity? previousState)
     {
         return new()
         {

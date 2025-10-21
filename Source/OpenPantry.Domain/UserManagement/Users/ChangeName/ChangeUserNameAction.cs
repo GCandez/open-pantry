@@ -1,4 +1,4 @@
-﻿using OpenPantry.Domain.Common.Entities;
+﻿using OpenPantry.Domain.Common.Entities.Actions;
 using OpenPantry.Domain.Common.Results;
 
 namespace OpenPantry.Domain.UserManagement.Users.ChangeName;

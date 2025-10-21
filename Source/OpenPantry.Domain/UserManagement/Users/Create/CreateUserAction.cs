@@ -1,4 +1,4 @@
-﻿using OpenPantry.Domain.Common.Entities;
+﻿using OpenPantry.Domain.Common.Entities.Actions;
 
 namespace OpenPantry.Domain.UserManagement.Users.Create;
 

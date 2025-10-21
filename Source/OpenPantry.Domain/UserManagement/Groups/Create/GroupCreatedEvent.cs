@@ -1,6 +1,6 @@
-﻿using OpenPantry.Domain.Common.Entities;
+﻿using OpenPantry.Domain.Common.Entities.Events;
 
-namespace OpenPantry.Domain.UserManagement.Groups.CreateGroup;
+namespace OpenPantry.Domain.UserManagement.Groups.Create;
 
 public sealed record GroupCreatedEvent : EntityEvent<GroupEntity, GroupCreatedEvent.EventData>
 {
@@ -10,7 +10,7 @@ public sealed record GroupCreatedEvent : EntityEvent<GroupEntity, GroupCreatedEv
         public required string Name { get; init; }
     }
 
-    public override GroupEntity Apply(GroupEntity? previousState)
+    public override GroupEntity DeriveNewState(GroupEntity? previousState)
     {
         return new()
         {

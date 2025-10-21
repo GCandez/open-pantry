@@ -1,6 +1,8 @@
-﻿namespace OpenPantry.Domain.Common.ValueObjects;
+﻿using OpenPantry.Domain.Common.Exceptions;
 
-public sealed class ValueObjectValidationException<TValueObject, TError>(TError error) : Exception(GetMessage(error))
+namespace OpenPantry.Domain.Common.ValueObjects;
+
+public sealed class ValueObjectValidationException<TValueObject, TError>(TError error) : DomainException(GetMessage(error))
     where TValueObject : IValueObject<TValueObject>
     where TError : Enum
 {

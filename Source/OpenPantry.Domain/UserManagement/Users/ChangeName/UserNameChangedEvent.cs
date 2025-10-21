@@ -1,4 +1,4 @@
-﻿using OpenPantry.Domain.Common.Entities;
+﻿using OpenPantry.Domain.Common.Entities.Events;
 
 namespace OpenPantry.Domain.UserManagement.Users.ChangeName;
 
@@ -9,7 +9,7 @@ public sealed record UserNameChangedEvent : EntityEvent<UserEntity, UserNameChan
         public required string NewUserName { get; init; }
     }
 
-    public override UserEntity Apply(UserEntity? previousState)
+    public override UserEntity DeriveNewState(UserEntity? previousState)
     {
         if (previousState is null)
             throw new InvalidOperationException("Cannot apply UserNameChangedEvent to a null UserEntity");

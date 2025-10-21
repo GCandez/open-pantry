@@ -1,4 +1,6 @@
-﻿namespace OpenPantry.Domain.Common.Entities;
+﻿using OpenPantry.Domain.Common.Entities.Events;
+
+namespace OpenPantry.Domain.Common.Entities;
 
 public abstract record Entity<TEntity>
     where TEntity : Entity<TEntity>
